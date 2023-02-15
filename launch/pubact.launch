@@ -1,0 +1,7 @@
+<launch>
+  <include file="$(find motor_driver)/launch/boot.launch"/>
+  <node pkg="motor_driver" name="motor_driver_pa" type="motor_driver_pa">
+    <param name="publish_frequency_" value="1"/>
+    <param name="publish_random_" value="true"/>
+  </node>
+</launch>

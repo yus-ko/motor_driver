@@ -1,0 +1,24 @@
+<launch>
+  <include file="$(find realsense2_camera)/launch/rs_aligned_depth.launch">
+  </include>
+
+  <include file="$(find visual_odometry)/launch/run_visual_odometry.launch">
+  </include>
+
+  <include file="$(find obstacle_detection_2019)/launch/test.launch">
+    <arg name="groundEstimate/output_screen" value="false"/>
+    <arg name="classification/output_screen" value="false"/>
+    <arg name="imageMatching/output_screen" value="false"/>
+    <arg name="measurementVelocity/output_screen" value="false"/>
+    <arg name="estimationVelocity/output_screen" value="false"/>
+  </include>
+
+  <!-- <include file="$(find local_navigation)/launch/run.launch"/> -->
+  
+  <include file="$(find motor_driver)/launch/boot.launch">
+  </include>
+
+  <node pkg="rqt_publisher" name="rqt_publisher" type="rqt_publisher">
+  </node>
+
+</launch>

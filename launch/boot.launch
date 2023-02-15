@@ -1,0 +1,39 @@
+<launch>
+  <arg name="control_" default="pid"/>  <!--制御法 pid,ff-->
+  <arg name="left_P_" default="1.0"/>
+  <arg name="left_I_" default="0.5"/>
+  <arg name="right_P_" default="1.025"/>
+  <arg name="right_I_" default="0.7"/>
+
+  <!--並進速度ゲイン-->
+  <arg name="velocity_P_" default="1"/>
+  <arg name="velocity_I_" default="0.5"/>
+  <arg name="velocity_D_" default="0.01"/>
+
+  <!--回転角速度ゲイン-->
+  <arg name="angular_P_" default="1"/>
+  <arg name="angular_I_" default="0.5"/>
+  <arg name="angular_D_" default="0.01"/>
+
+  <arg name="pulse_upper_limit_" default="1500"/> <!--ステッピングモーターパルス数上限値-->
+  <arg name="pulse_lower_limit_" default="200"/>  <!--ステッピングモーターパルス数下限値-->
+
+  <node pkg="motor_driver" name="motor_driver_encoder" type="motor_driver_encoder" output="screen">
+  </node>
+  <node pkg="motor_driver" name="motor_driver_md" type="motor_driver_md">
+    <param name="control_" value="$(arg control_)"/>
+    <param name="left_P_" value="$(arg left_P_)"/>
+    <param name="left_I_" value="$(arg left_I_)"/>
+    <param name="right_P_" value="$(arg right_P_)"/>
+    <param name="right_I_" value="$(arg right_I_)"/>
+    <param name="velocity_P_" value="$(arg velocity_P_)"/>
+    <param name="velocity_I_" value="$(arg velocity_I_)"/>
+    <param name="velocity_D_" value="$(arg velocity_D_)"/>
+    <param name="angular_P_" value="$(arg angular_P_)"/>
+    <param name="angular_I_" value="$(arg angular_I_)"/>
+    <param name="angular_D_" value="$(arg angular_D_)"/>
+    <param name="pulse_upper_limit_" value="$(arg pulse_upper_limit_)"/>
+    <param name="pulse_lower_limit_" value="$(arg pulse_lower_limit_)"/>
+  </node>
+
+</launch>
